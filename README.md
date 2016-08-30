@@ -1,1 +1,1 @@
-# CLT_simulartion
+# CLT_simulation
