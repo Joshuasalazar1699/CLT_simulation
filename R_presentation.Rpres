@@ -1,0 +1,133 @@
+Non-Normal Distributions and Central Limit Theorem
+========================================================
+author: Jinsong Zhang
+date: 
+autosize: true
+
+Objectives of this presentation
+========================================================
+
+
+
+- Simulate non-normal distritions
+- Sample and collect means from sampled observations
+- Plot the means
+- Validate the general applicability of the Central Limit Theorem (CLT)
+
+Binominal Distribution and CLT
+========================================================
+
+```{r}
+sim=rbinom(1000,1,0.5)
+```
+
+```{r,echo=FALSE,fig=TRUE}
+hist(sim,prob=TRUE,40,xlab=paste0("mean=",mean(sim)),main="Poisson distribution")
+curve(dpois(as.integer(x),2), col="blue", lwd=2,add=TRUE, yaxt="n")
+abline(v=mean(sim),col="red",lwd=2)
+```
+***
+```{r,echo=FALSE,fig=TRUE}
+mns=c()
+var1=c()
+for (i in 1 : 1000) {
+    sampling<-sample(length(sim),40,replace = T)
+    mns = c(mns, mean(sim[sampling]))
+    var1 = c(var1, var(sim[sampling]))
+  }
+df<-data.frame(m=mns,v=var1)
+df_mean=apply(df,2,mean)
+df_var=apply(df,2,var)
+hist(df$m,prob=TRUE,40,xlab="mean of sample mean",main=paste0("mean of binominal samples"))
+curve(dnorm(x,df_mean[1],sqrt(df_var[1])), col="red", lwd=2,add=TRUE, yaxt="n")
+```
+
+Poisson Distribution and CLT
+========================================================
+
+```{r}
+sim=rpois(1000,2)
+```
+
+```{r,echo=FALSE,fig=TRUE}
+hist(sim,prob=TRUE,40,xlab=paste0("mean=",mean(sim)),main="Poisson distribution")
+curve(dpois(as.integer(x),2), col="blue", lwd=2,add=TRUE, yaxt="n")
+abline(v=mean(sim),col="red",lwd=2)
+```
+***
+```{r,echo=FALSE,fig=TRUE}
+mns=c()
+var1=c()
+for (i in 1 : 1000) {
+    sampling<-sample(length(sim),40,replace = T)
+    mns = c(mns, mean(sim[sampling]))
+    var1 = c(var1, var(sim[sampling]))
+  }
+df<-data.frame(m=mns,v=var1)
+df_mean=apply(df,2,mean)
+df_var=apply(df,2,var)
+hist(df$m,prob=TRUE,40,xlab="mean of sample mean",main=paste0("mean of binominal samples"))
+curve(dnorm(x,df_mean[1],sqrt(df_var[1])), col="red", lwd=2,add=TRUE, yaxt="n")
+```
+
+
+Negative Binominal Distribution and CLT
+========================================================
+
+```{r}
+sim=rnbinom(1000,2,0.8)
+```
+
+```{r,echo=FALSE,fig=TRUE}
+hist(sim,prob=TRUE,40,xlab=paste0("mean=",mean(sim)),main="Poisson distribution")
+curve(dnbinom(as.integer(x),2,0.8), col="blue", lwd=2,add=TRUE, yaxt="n")
+abline(v=mean(sim),col="red",lwd=2)
+```
+***
+```{r,echo=FALSE,fig=TRUE}
+mns=c()
+var1=c()
+for (i in 1 : 1000) {
+    sampling<-sample(length(sim),40,replace = T)
+    mns = c(mns, mean(sim[sampling]))
+    var1 = c(var1, var(sim[sampling]))
+  }
+df<-data.frame(m=mns,v=var1)
+df_mean=apply(df,2,mean)
+df_var=apply(df,2,var)
+hist(df$m,prob=TRUE,40,xlab="mean of sample mean",main=paste0("mean of binominal samples"))
+curve(dnorm(x,df_mean[1],sqrt(df_var[1])), col="red", lwd=2,add=TRUE, yaxt="n")
+```
+
+Exponential Distribution and CLT
+========================================================
+
+```{r}
+sim=rexp(1000,0.2)
+```
+
+```{r,echo=FALSE,fig=TRUE}
+hist(sim,prob=TRUE,40,xlab=paste0("mean=",mean(sim)),main="Poisson distribution")
+curve(dexp(as.integer(x),0.2), col="blue", lwd=2,add=TRUE, yaxt="n")
+abline(v=mean(sim),col="red",lwd=2)
+```
+***
+```{r,echo=FALSE,fig=TRUE}
+mns=c()
+var1=c()
+for (i in 1 : 1000) {
+    sampling<-sample(length(sim),40,replace = T)
+    mns = c(mns, mean(sim[sampling]))
+    var1 = c(var1, var(sim[sampling]))
+  }
+df<-data.frame(m=mns,v=var1)
+df_mean=apply(df,2,mean)
+df_var=apply(df,2,var)
+hist(df$m,prob=TRUE,40,xlab="mean of sample mean",main=paste0("mean of binominal samples"))
+curve(dnorm(x,df_mean[1],sqrt(df_var[1])), col="red", lwd=2,add=TRUE, yaxt="n")
+
+```
+
+
+
+
