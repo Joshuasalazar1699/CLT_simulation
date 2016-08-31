@@ -2,14 +2,15 @@ library(shiny)
 shinyUI(fluidPage(
 
 titlePanel("Using R to simulate commmon statistic distributions and to validate the Central Limit Theorem (CLT) \n\n"),
-hr(),
-hr(),
+br(),
 hr(),
 
-a("View Help Document",target="_blank",href="https://sites.google.com/site/zhangj848012/document.pdf"),
+a("Documentation",target="_blank",href="https://sites.google.com/site/zhangj848012/document.pdf"),
+br(),
+a("Download Source Codes @ GitHub",target="_blank",href="https://github.com/zhangj5/CLT_simulation"),
 hr(),
-hr(),
-hr(),
+br(),
+br(),
 
 fluidRow(
 
